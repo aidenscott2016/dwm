@@ -1,4 +1,5 @@
 *.o
-config.h
 dwm
 .vscode
+dwm.1
+*.swp
