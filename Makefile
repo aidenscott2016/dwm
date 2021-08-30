@@ -43,9 +43,18 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
+	cp -f scripts/startdwm.sh ${DESTDIR}${PREFIX}/bin/startdwm
+	cp -f scripts/clock.sh ${DESTDIR}${PREFIX}/bin/dwmclock
+
+
+link:
+	ln xinitrc ~/.xinitrc
+
 
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
+	rm ${HOME}/.xinitrc
+
 
 .PHONY: all options clean dist install uninstall
