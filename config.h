@@ -70,6 +70,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_F8,     spawn,          {.v = internalscreen } },
 	{ MODKEY,                       XK_Print,     spawn,          SHCMD("maimpick")},
+	{ MODKEY,                       XK_Prior,     spawn,          SHCMD("dmenu-hueadm")},
 	{ MODKEY|ShiftMask,             XK_F8,     spawn,          {.v = externalscreen } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
