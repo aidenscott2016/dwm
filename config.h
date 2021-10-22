@@ -70,11 +70,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *internalscreen[] = {"/home/aidenscott/.screenlayout/internal-only.sh", NULL};
-static const char *externalscreen[] = {"/home/aidenscott/.screenlayout/external-only.sh", NULL};
-static const char *mutecmd[] = {"pactl", "set-sink-mute", "0", "toggle", NULL};
-static const char *volupcmd[] = {"pactl", "set-sink-volume", "0", "+5%", NULL};
-static const char *voldowncmd[] = {"pactl", "set-sink-volume", "0", "-5%", NULL};
+static const char *internalscreen[] = {"~/.screenlayout/internal-only.sh", NULL};
 static const char *brupcmd[] = {"sudo", "xbacklight", "-inc", "10", NULL};
 static const char *brdowncmd[] = {"sudo", "xbacklight", "-dec", "10", NULL};
 
@@ -83,12 +79,12 @@ static Key keys[] = {
 		{MODKEY, XK_F8, spawn, SHCMD("displayselect")},
 		{MODKEY, XK_Print, spawn, SHCMD("maimpick")},
 		{MODKEY, XK_Prior, spawn, SHCMD("dmenu-hueadm")},
-		{0, XF86XK_AudioMute, spawn, {.v = mutecmd}},
-		{0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd}},
-		{0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd}},
+		{0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
+		{0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d5")},
+		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
 		{0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd}},
 		{0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd}},
-		{MODKEY | ShiftMask, XK_F8, spawn, {.v = externalscreen}},
+		{MODKEY | ShiftMask, XK_F8, spawn, SHCMD("$HOME/.screenlayout/internal-only.sh")},
 		{MODKEY, XK_p, spawn, {.v = dmenucmd}},
 		{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
 		{MODKEY, XK_b, togglebar, {0}},
