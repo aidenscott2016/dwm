@@ -78,7 +78,7 @@ static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL  };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_F8,     spawn,          {.v = internalscreen } },
+	{ MODKEY,                       XK_F8,     spawn,          SHCMD("displayselect")},
 	{ MODKEY,                       XK_Print,     spawn,          SHCMD("maimpick")},
 	{ MODKEY,                       XK_Prior,     spawn,          SHCMD("dmenu-hueadm")},
   { 0, XF86XK_AudioMute, spawn, {.v = mutecmd }  },
