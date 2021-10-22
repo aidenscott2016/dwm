@@ -1,3 +1,4 @@
+#include <X11/XF86keysym.h>
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -36,6 +37,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
+
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
@@ -65,12 +67,25 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *internalscreen[]  = { "/home/aidenscott/.screenlayout/internal-only.sh", NULL };
 static const char *externalscreen[]  = { "/home/aidenscott/.screenlayout/external-only.sh", NULL };
+static const char *mutecmd[] = { "pactl", "set-sink-mute", "0", "toggle", NULL  };
+static const char *volupcmd[] = { "pactl", "set-sink-volume", "0", "+5%", NULL  };
+static const char *voldowncmd[] = { "pactl", "set-sink-volume", "0", "-5%", NULL  };
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL  };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL  };
+
+
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_F8,     spawn,          {.v = internalscreen } },
 	{ MODKEY,                       XK_Print,     spawn,          SHCMD("maimpick")},
 	{ MODKEY,                       XK_Prior,     spawn,          SHCMD("dmenu-hueadm")},
+  { 0, XF86XK_AudioMute, spawn, {.v = mutecmd }  },
+  { 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd }  },
+  { 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd }  },
+  { 0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd}  },
+  { 0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd}  },
 	{ MODKEY|ShiftMask,             XK_F8,     spawn,          {.v = externalscreen } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
