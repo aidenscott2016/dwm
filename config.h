@@ -77,8 +77,10 @@ static const char *brdowncmd[] = {"sudo", "xbacklight", "-dec", "10", NULL};
 static Key keys[] = {
 		/* modifier                     key        function        argument */
 		{MODKEY, XK_F8, spawn, SHCMD("displayselect")},
+		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")},
 		{MODKEY, XK_Print, spawn, SHCMD("maimpick")},
 		{MODKEY, XK_Prior, spawn, SHCMD("dmenu-hueadm")},
+		{MODKEY | ShiftMask , XK_p , spawn, SHCMD("passmenu -l 10 -i")},
 		{0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
 		{0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d5")},
 		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
