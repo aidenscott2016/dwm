@@ -1,8 +1,8 @@
 #! /bin/sh
+cbatticon &
 while true; do
-   BATTERY="$(sudo cat /sys/class/power_supply/BAT0/capacity)"
    TIME="$( date +"%F %R:%S" )"
-   OUT="$TIME $BATTERY"
+   OUT="$TIME"
    xsetroot -name "$OUT"
 
    sleep 1s    # Update time every minute
