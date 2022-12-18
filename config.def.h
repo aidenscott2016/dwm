@@ -70,8 +70,8 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *brupcmd[] = {"sudo", "xbacklight", "-inc", "10", NULL};
-static const char *brdowncmd[] = {"sudo", "xbacklight", "-dec", "10", NULL};
+/* static const char *brupcmd[] = {"sudo", "xbacklight", "-inc", "10", NULL}; */
+/* static const char *brdowncmd[] = {"sudo", "xbacklight", "-dec", "10", NULL}; */
 static const char *playPause[] = {"playerctl", "-a", "10", NULL};
 
 static Key keys[] = {
@@ -107,7 +107,8 @@ static Key keys[] = {
 		{MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
 		{MODKEY, XK_space, setlayout, {0}},
 		{MODKEY | ShiftMask, XK_space, togglefloating, {0}},
-		{MODKEY, XK_0, view, {.ui = ~0}},
+	
+	{MODKEY, XK_0, view, {.ui = ~0}},
 		{MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
 		{MODKEY, XK_comma, focusmon, {.i = -1}},
 		{MODKEY, XK_period, focusmon, {.i = +1}},
@@ -124,7 +125,7 @@ static Key keys[] = {
 		TAGKEYS(XK_9, 8),
 		{MODKEY | ShiftMask, XK_e, quit, {0}},
 		{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")}
+		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")},
 		{0, XF86XK_AudioPlay, spawn, {.v = playPause }},
 };
 
