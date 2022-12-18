@@ -127,6 +127,7 @@ static Key keys[] = {
 		{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
 		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")},
 		{0, XF86XK_AudioPlay, spawn, {.v = playPause }},
+		{ MODKEY|ShiftMask,             XK_space,  togglealwaysontop, {0} },
 };
 
 /* button definitions */
