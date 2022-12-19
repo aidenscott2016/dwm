@@ -1,4 +1,5 @@
 # relaunch DWM if the binary changes, otherwise bail
+./clock.sh &
 csum=""
 new_csum=$(sha1sum $(which dwm))
 while true
