@@ -15,7 +15,7 @@ do
     if [ "$csum" != "$new_csum" ]
     then
         csum=$new_csum
-        #dwm
+        dwm
     else
         exit 0
     fi
