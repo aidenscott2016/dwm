@@ -15,7 +15,7 @@
         dwm = prev.dwm.overrideAttrs (old: {
           version = "6.4";
           src = builtins.path { path = ./.; name = "dwm"; };
-          buildInputs = with pkgs;[ playerctl i3lock pamixer autorandr ];
+          buildInputs = with pkgs;[ playerctl i3lock pamixer autorandr ] ++ old.buildInputs;
         });
       };
     in
@@ -24,6 +24,8 @@
       packages.${system}.default = pkgs.dwm;
       nixosModules.default = {
         config = {
+          services.xserver.windowManager.dwm.enable = true;
+          services.xserver.windowManager.dwm.package = pkgs.dwm;
           services.xserver.windowManager.session = pkgs.lib.singleton {
             name = "dwm+aiden";
             start =
