@@ -34,6 +34,11 @@
                 waitPID=$!
               '';
           };
+          environment.sessionVariables = {
+            AIDEN = "COOL";
+            _JAVA_AWT_WM_NONREPARENTING = "1";
+            AWT_TOOLKIT = "MToolkit";
+          };
         };
       };
     };
