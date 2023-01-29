@@ -15,7 +15,7 @@
         dwm = prev.dwm.overrideAttrs (old: {
           version = "6.4";
           src = builtins.path { path = ./.; name = "dwm"; };
-          buildInputs = with pkgs;[ playerctl i3lock pamixer autorandr ] ++ old.buildInputs;
+          buildInputs = with pkgs;[ playerctl i3lock pamixer autorandr light ] ++ old.buildInputs;
         });
       };
     in

@@ -1,4 +1,6 @@
 cbatticon &
+autorandr --change --default default &
+
 while true; do
    TIME="$( date +"%F %R:%S" )"
    OUT="$TIME"

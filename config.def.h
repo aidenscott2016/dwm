@@ -70,8 +70,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
 static const char *termcmd[] = {"st", NULL};
-/* static const char *brupcmd[] = {"sudo", "xbacklight", "-inc", "10", NULL}; */
-/* static const char *brdowncmd[] = {"sudo", "xbacklight", "-dec", "10", NULL}; */
 static const char *playPause[] = {"playerctl", "-a", "10", NULL};
 
 static Key keys[] = {
@@ -86,8 +84,8 @@ static Key keys[] = {
 		{0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
 		{0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d5")},
 		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
-		{0, XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 10" )},
-		{0, XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 10" )},
+		{0, XF86XK_MonBrightnessUp, spawn, SHCMD("light -A 5%" )},
+		{0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5%" )},
 		{MODKEY | ShiftMask, XK_F8, spawn, SHCMD("xrandr --output eDP1 --auto")},
 		{MODKEY, XK_x, spawn, SHCMD("xrandr --auto")},
 		{MODKEY, XK_p, spawn, {.v = dmenucmd}},
