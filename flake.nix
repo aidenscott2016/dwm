@@ -3,8 +3,12 @@
   description = "Customized dwm";
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+  inputs.maimpick = {
+    url = "github:aidenscott2016/larbs-flake";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, maimpick }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -49,6 +53,7 @@
 
           programs.light.enable = true;
           environment.systemPackages = with pkgs; [
+            maimpick.packages."${system}".maimpick
             arandr
             st
             pavucontrol
