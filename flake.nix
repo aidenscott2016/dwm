@@ -1,4 +1,4 @@
-#https://github.com/Gerschtli/dwm/blob/master/flake.nix
+# https://github.com/Gerschtli/dwm/blob/master/flake.nix
 {
   description = "Customized dwm";
 
@@ -14,31 +14,58 @@
       overlay = final: prev: {
         dwm = prev.dwm.overrideAttrs (old: {
           version = "6.4";
-          src = builtins.path { path = ./.; name = "dwm"; };
-          buildInputs = with pkgs;[ playerctl i3lock pamixer autorandr light ] ++ old.buildInputs;
+          src = builtins.path {
+            path = ./.;
+            name = "dwm";
+          };
         });
       };
-    in
-    {
+    in {
       overlays.default = overlay;
       packages.${system}.default = pkgs.dwm;
       nixosModules.default = {
         config = {
-          services.xserver.windowManager.dwm.enable = true;
-          services.xserver.windowManager.dwm.package = pkgs.dwm;
-          services.xserver.windowManager.session = pkgs.lib.singleton {
-            name = "dwm+aiden";
-            start =
-              ''
-                startdwm &
-                waitPID=$!
-              '';
-          };
           environment.sessionVariables = {
             AIDEN = "COOL";
             _JAVA_AWT_WM_NONREPARENTING = "1";
             AWT_TOOLKIT = "MToolkit";
           };
+
+          services.picom = {
+            enable = true;
+            vSync = true;
+          };
+          services.xserver.windowManager = {
+            dwm.enable = true;
+            dwm.package = pkgs.dwm;
+            session = pkgs.lib.singleton {
+              name = "dwm+aiden";
+              start = ''
+                startdwm &
+                waitPID=$!
+              '';
+            };
+          };
+
+          programs.light.enable = true;
+          environment.systemPackages = with pkgs; [
+            arandr
+            st
+            pavucontrol
+            pinentry-gtk2
+            pcmanfm
+            libnotify
+            dunst
+            pamixer
+            cbatticon
+            networkmanagerapplet
+            dmenu
+            i3lock
+            playerctl
+            pamixer
+            autorandr
+            light
+          ];
         };
       };
     };
