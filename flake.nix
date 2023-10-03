@@ -70,6 +70,7 @@
             pamixer
             autorandr
             light
+            xorg.libXinerama
           ];
         };
       };
