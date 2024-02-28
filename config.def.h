@@ -76,7 +76,6 @@ static Key keys[] = {
 		/* modifier                     key        function        argument */
 		{MODKEY | ShiftMask , XK_p , spawn, SHCMD("passmenu -l 10 -i")},
 		{MODKEY, XK_F8, spawn, SHCMD("displayselect")},
-		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")},
 		{MODKEY, XK_Print, spawn, SHCMD("maimpick")},
 		{MODKEY, XK_Prior, spawn, SHCMD("dmenu-hueadm")},
 		/*{MODKEY, XF86XK_AudioRaiseVolume, spawn, SHCMD("pavucontrol")},
@@ -84,8 +83,13 @@ static Key keys[] = {
 		{0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
 		{0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d5")},
 		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
+
 		{0, XF86XK_MonBrightnessUp, spawn, SHCMD("light -A 5%" )},
+		{MODKEY, XF86XK_AudioRaiseVolume, spawn, SHCMD("light -A 5%" )},
+
 		{0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5%" )},
+		{MODKEY, XF86XK_AudioLowerVolume, spawn, SHCMD("light -U 5%" )},
+
 		{MODKEY | ShiftMask, XK_F8, spawn, SHCMD("xrandr --output eDP1 --auto")},
 		{MODKEY, XK_x, spawn, SHCMD("xrandr --auto")},
 		{MODKEY, XK_p, spawn, {.v = dmenucmd}},
@@ -106,7 +110,7 @@ static Key keys[] = {
 		{MODKEY, XK_space, setlayout, {0}},
 		{MODKEY | ShiftMask, XK_space, togglefloating, {0}},
 	
-	{MODKEY, XK_0, view, {.ui = ~0}},
+		{MODKEY, XK_0, view, {.ui = ~0}},
 		{MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
 		{MODKEY, XK_comma, focusmon, {.i = -1}},
 		{MODKEY, XK_period, focusmon, {.i = +1}},
@@ -123,7 +127,7 @@ static Key keys[] = {
 		TAGKEYS(XK_9, 8),
 		{MODKEY | ShiftMask, XK_e, quit, {0}},
 		{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-		{MODKEY, XK_Escape, spawn, SHCMD("i3lock")},
+		{MODKEY, XK_Escape, spawn, SHCMD("i3lock; sleep 2; xset dpms force off")},
 		{0, XF86XK_AudioPlay, spawn, {.v = playPause }},
 		{ MODKEY|ShiftMask,             XK_space,  togglealwaysontop, {0} },
 };
