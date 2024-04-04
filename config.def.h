@@ -85,8 +85,10 @@ static Key keys[] = {
 		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
 
 		{0, XF86XK_MonBrightnessUp, spawn, SHCMD("light -A 5%" )},
+		{MODKEY, XF86XK_MonBrightnessUp, spawn, SHCMD("systemctl --user start redshift.service" )},
 
 		{0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5%" )},
+		{MODKEY, XF86XK_MonBrightnessDown, spawn, SHCMD("systemctl --user stop redshift.service" )},
 
 		{MODKEY | ShiftMask, XK_F8, spawn, SHCMD("xrandr --output eDP1 --auto")},
 		{MODKEY, XK_x, spawn, SHCMD("xrandr --auto")},
