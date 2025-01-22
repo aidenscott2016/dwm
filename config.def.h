@@ -70,16 +70,13 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = {"dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL};
 static const char *termcmd[] = {"st", NULL};
-static const char *playPause[] = {"playerctl", "-a", "10", NULL};
+static const char *playPause[] = {"playerctl", "-a", "play-pause", NULL};
 
 static Key keys[] = {
 		/* modifier                     key        function        argument */
 		{MODKEY | ShiftMask , XK_p , spawn, SHCMD("passmenu -l 10 -i")},
 		{MODKEY, XK_F8, spawn, SHCMD("displayselect")},
 		{MODKEY, XK_Print, spawn, SHCMD("maimpick")},
-		{MODKEY, XK_Prior, spawn, SHCMD("dmenu-hueadm")},
-		/*{MODKEY, XF86XK_AudioRaiseVolume, spawn, SHCMD("pavucontrol")},
-		  {MODKEY, XK_F3, spawn, SHCMD("pavucontrol")},*/
 		{0, XF86XK_AudioMute, spawn, SHCMD("pamixer -t")},
 		{0, XF86XK_AudioLowerVolume, spawn, SHCMD("pamixer -d5")},
 		{0, XF86XK_AudioRaiseVolume, spawn, SHCMD("pamixer -i5")},
@@ -90,8 +87,7 @@ static Key keys[] = {
 		{0, XF86XK_MonBrightnessDown, spawn, SHCMD("light -U 5%" )},
 		{MODKEY, XF86XK_MonBrightnessDown, spawn, SHCMD("systemctl --user stop redshift.service" )},
 
-		{MODKEY | ShiftMask, XK_F8, spawn, SHCMD("xrandr --output eDP1 --auto")},
-		{MODKEY, XK_x, spawn, SHCMD("xrandr --auto")},
+		{MODKEY, XK_x, spawn, SHCMD("autorandr --cycle")},
 		{MODKEY, XK_p, spawn, {.v = dmenucmd}},
 		{MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
 		{MODKEY, XK_b, togglebar, {0}},
@@ -127,7 +123,7 @@ static Key keys[] = {
 		TAGKEYS(XK_9, 8),
 		{MODKEY | ShiftMask, XK_e, quit, {0}},
 		{MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-		{MODKEY, XK_Escape, spawn, SHCMD("i3lock; sleep 2; xset dpms force off")},
+		{MODKEY, XK_Escape, spawn, SHCMD("sudo physlock")},
 		{0, XF86XK_AudioPlay, spawn, {.v = playPause }},
 		{ MODKEY|ShiftMask,             XK_space,  togglealwaysontop, {0} },
 };
