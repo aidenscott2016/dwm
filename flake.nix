@@ -52,6 +52,7 @@
           };
 
           programs.light.enable = true;
+          services.blueman.enable = true;
           environment.systemPackages = with pkgs; [
             maimpick.packages."${system}".maimpick
             arandr
