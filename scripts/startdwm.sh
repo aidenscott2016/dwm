@@ -1,5 +1,6 @@
 cbatticon &
 autorandr --change --default default &
+blueman-applet &
 
 while true; do
    TIME="$( date +"%F %R:%S" )"
@@ -17,7 +18,7 @@ do
     if [ "$csum" != "$new_csum" ]
     then
         csum=$new_csum
-        dwm
+        dbus-launch --exit-with-session dwm
     else
         exit 0
     fi
