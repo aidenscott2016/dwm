@@ -1,5 +1,42 @@
 {
   "nodes": {
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "maimpick": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "voidrice": "voidrice"
+      },
+      "locked": {
+        "lastModified": 1680008152,
+        "narHash": "sha256-8RQsyWoVfLD+SBl27c018qxb9Dn9z2tPvy0bMoRrCHw=",
+        "owner": "aidenscott2016",
+        "repo": "larbs-flake",
+        "rev": "63490a1ed23a6919b2b8ba7f1f379364640734cb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aidenscott2016",
+        "repo": "larbs-flake",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1671215800,
@@ -18,7 +55,24 @@
     },
     "root": {
       "inputs": {
+        "maimpick": "maimpick",
         "nixpkgs": "nixpkgs"
+      }
+    },
+    "voidrice": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1679694583,
+        "narHash": "sha256-W0TVLjfMWHjy8OFjkBp4jGZnIczTOYBnRMM/upn6BeE=",
+        "owner": "LukeSmithxyz",
+        "repo": "voidrice",
+        "rev": "749f74f84ef1ec1b15c9003c23120dc5c4baaa35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LukeSmithxyz",
+        "repo": "voidrice",
+        "type": "github"
       }
     }
   },
