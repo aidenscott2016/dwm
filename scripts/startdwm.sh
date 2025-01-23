@@ -1,13 +1,13 @@
 cbatticon &
-autorandr --change --default default &
+#autorandr --change --default default &
 blueman-applet &
 
+#clock
 while true; do
    TIME="$( date +"%F %R:%S" )"
    OUT="$TIME"
    xsetroot -name "$OUT"
-
-   sleep 1s    # Update time every minute
+   sleep 1s
 done &
 
 # relaunch DWM if the binary changes, otherwise bail
